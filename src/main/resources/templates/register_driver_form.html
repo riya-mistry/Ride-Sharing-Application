@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" th:href="@{/css/demo.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+          crossorigin="anonymous">
+    <title class="header">
+        Register Driver
+    </title>
+    <style>
+
+        .black-border-1 {
+            border-color: black;
+            border-width: medium;
+        }
+
+        .black-border-3 {
+            border-radius: 30px;
+        }
+
+    </style>
+</head>
+<body>
+<section class="vh-200 bg-image"
+         style="background-color: white">
+    <div class="mask d-flex align-items-center h-100">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card m-3 black-border-3 container h-100"
+                         style="border-color: white; box-shadow: darkgrey 1px 1px 2px 2px">
+                        <div class="card-body p-6 m-2">
+                            <h2 class="text-uppercase text-center mb-3">Driver Registration</h2>
+                            <div th:object="${registrationError}" th:if="${registrationError != null}"
+                                 class="alert alert-danger black-border-3">
+                                <p th:text="${registrationError}"></p>
+                            </div>
+                            <form role="form" th:action="@{/driver/register/save}" method="post" th:object="${driver}">
+                                <div class="form-outline mb-2">
+                                    <label class="form-label" for="driverName">Your Name</label>
+                                    <input type="text" th:field="*{driverName}" id="driverName"
+                                           class="form-control form-control-lg black-border-3" required/>
+                                </div>
+
+                                <div class="form-outline mb-2">
+                                    <label class="form-label" for="driver_email">Your Email</label>
+                                    <input type="email" th:field="*{driverEmail}" id="driver_email"
+                                           class="form-control form-control-lg black-border-3"/>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="driver_password">Enter a Password</label>
+                                    <input th:field="*{driverPassword}" type="password" id="driver_password"
+                                           class="form-control form-control-lg black-border-3" required/>
+                                </div>
+
+                                <div class="form-outline mb-2">
+                                    <label class="form-label" for="driver_license">License Number</label>
+                                    <input type="text" th:field="*{driverLicense}" id="driver_license"
+                                           class="form-control form-control-lg black-border-3" required/>
+                                </div>
+
+                                <div id="date-picker-example" class="form-outline mb-2 input-with-post-icon datepicker"
+                                     inline="true">
+                                    <label for="license_expiry_date">License Expiry Date</label>
+                                    <input th:field="*{licenseExpiryDate}" placeholder="Select date" type="date"
+                                           id="license_expiry_date" class="form-control black-border-3" required>
+                                    <i class="fas fa-calendar input-prefix"></i>
+                                </div>
+
+                                <div class="form-outline mb-2">
+                                    <label class="form-label" for="registered_vehicle_number">Vehicle
+                                        Number</label>
+                                    <input type="text" th:field="*{registeredVehicleNumber}"
+                                           id="registered_vehicle_number"
+                                           class="form-control form-control-lg black-border-3"
+                                           required/>
+                                </div>
+
+                                <div class="form-outline mb-2">
+                                    <label class="form-label" for="vehicle_name">Vehicle Name</label>
+                                    <input type="text" th:field="*{vehicleName}" id="vehicle_name"
+                                           class="form-control form-control-lg black-border-3" required/>
+                                </div>
+
+                                <div class="form-outline mb-2">
+                                    <label class="form-label" for="vehicle_model">Vehicle Model</label>
+                                    <input type="text" th:field="*{vehicleModel}" id="vehicle_model"
+                                           class="form-control form-control-lg black-border-3" required/>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="vehicle_color">Vehicle Color</label>
+                                    <input type="text" th:field="*{vehicleColor}" id="vehicle_color"
+                                           class="form-control form-control-lg black-border-3" required/>
+                                </div>
+
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" value="Request"
+                                            class="btn black-border-1 black-border-3 btn-block btn-lg text-body">
+                                        Register
+                                    </button>
+                                </div>
+                                <p class="text-center text-muted mt-4 mb-0">Have already an account? <a
+                                        th:href="@{/driver/login}"
+                                        class="fw-bold text-body"><u>Login
+                                    here</u></a></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+
+<script>
+    $('.datepicker').datepicker({
+        inline: true
+    });
+</script>
+</html>
