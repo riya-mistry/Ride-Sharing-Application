@@ -1,4 +1,4 @@
-# Group 12
+# News360 Application- Group 12 -Advanced Web Development course
 
 
 
